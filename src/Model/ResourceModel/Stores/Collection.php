@@ -120,32 +120,39 @@ class Collection extends AbstractCollection
         return parent::addFieldToFilter($field, $condition);
     }
 
-    /**
-     * Add filter by store
-     *
-     * @param int|\Magento\Store\Model\Store $store
-     * @param bool $withAdmin
-     * @return $this
-     */
-    public function addStoreFilter($store, bool $withAdmin = true)
-    {
-        if (!$this->getFlag('store_filter_added')) {
-            if ($store instanceof Store) {
-                $store = [$store->getId()];
-            }
+	/**
+	 * Add filter by store
+	 *
+	 * @param int|\Magento\Store\Model\Store $store
+	 * @param bool $withAdmin
+	 * @return $this
+	 */
+	public function addStoreFilter($store, bool $withAdmin = true)
+	{
+		if ( !$this->getFlag('store_filter_added') )
+		{
+			if ($store instanceof Store)
+			{
+				$store = [ $store->getId() ];
+			}
 
-            if (!is_array($store)) {
-                $store = [$store];
-            }
+			if ( !is_array($store) )
+			{
+				$store = [$store];
+			}
 
-            if ($withAdmin) {
-                $store[] = Store::DEFAULT_STORE_ID;
-            }
+			if ( $withAdmin )
+			{
+				$store[] = Store::DEFAULT_STORE_ID;
+			}
 
-            $this->addFilter('store_id', ['in' => $store], 'public');
-        }
-        return $this;
-    }
+			foreach ($store as $store_id)
+			{
+				$this->addFilter('store_id', ['like' => '%' . $store_id . '%'], 'or');
+			}
+		}
+		return $this;
+	}
 
     /**
      * Join store relation table if there is store filter
