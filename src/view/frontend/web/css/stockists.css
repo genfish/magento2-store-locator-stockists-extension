@@ -6,9 +6,11 @@
     width: 100%;
     max-width: none;
 }
+/*
 .stockists .page-title-wrapper{
     text-align: center;
 }
+*/
 #map-canvas {
   height: 100%;
   min-height: 800px;
@@ -239,28 +241,32 @@
 }
 
 /* page_width_top styling */
-.page_width_top .search-stockists{
-    width: auto;
-    height: auto;
-    z-index: 1;
-    position: static;
-    border: 1px solid black;
-    margin-bottom: 10px;
-
+.page_width_top .search-stockists,
+.full_width_top .search-stockists
+{
+	width: auto;
+	height: auto;
+	z-index: 1;
+	position: static;
+	border: 1px solid black;
+	margin-bottom: 10px;
 }
+
 .page_width_top #map-canvas{
 	width: auto!important;
 	height: 800px;
 }
+
 .page_width_top .stockists-results,
-.page_width_top .directions-panel{
+.page_width_top .directions-panel
+{
 	width: 285px;
-    float: left;
-    border: 1px solid black;
-    margin-right: 10px;
-    height: 788px;
-    overflow-x: scroll;
-    padding: 5px;
+	float: left;
+	border: 1px solid black;
+	margin-right: 10px;
+	height: 788px;
+	overflow-x: scroll;
+	padding: 5px;
 }
 .page_width_top .directions-panel{
 	right:auto;
