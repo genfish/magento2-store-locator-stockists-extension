@@ -10,11 +10,11 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
- * @copyright 2016 Claudiu Creanga
- * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @category	Limesharp
+ * @package		Limesharp_Stockists
+ * @copyright	2017 Claudiu Creanga
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ * @author		Claudiu Creanga & David Buxarrais
  */
 ?>
 
@@ -23,8 +23,6 @@ declare(strict_types=1);
 <?php
 
 $_store				= $block->getCurrentStore();
-$data				= $block->getStoresForFrontend();
-$countryList		= $block->getCountries();
 $modulePath			= "limesharp_stockists/stockist/image/";
 $templateSetting	= $block->getTemplateSettings();
 $storeId			= $block->getStoreId();
@@ -36,29 +34,24 @@ else
 ?>
 <!-- there are 4 templates, page_width_top, full_width_top, full_width_sidebar or page_width_sidebar -->
 <div class="parent-stockists <?php echo $templateSetting; ?>">
-
-	<div class="directions-panel">
-		<p><?php /* @escapeNotVerified */ echo __("Your directions"); ?>: </p>
-		<p class="change-directions">Change to <span class="walking get-directions" data-directions="WALKING">walking, </span><span class="cycle get-directions" data-directions="BICYCLING">cycling</span>, <span class="transit get-directions" data-directions="TRANSIT">public transport</span> or <span class="driving get-directions" data-directions="DRIVING">driving</span>.</p>
-		<div class="close"></div>
-	</div>
-
 	<div class="search-stockists">
 		<div class="search-header">
-			<p class="search-title"><?php /* @escapeNotVerified */ echo __("Find a stockist"); ?>
-				<span class="geocode-location"></span>
-			</p>
-			<p class="stockists-intro"><?php /* @escapeNotVerified */ echo __("Enter a city, country or full post/zip code"); ?></p>
-			<input id="stockist-search-term" type="text" placeholder="Search" />
-			<button id="stockists-submit"><?php /* @escapeNotVerified */ echo __("Search"); ?></button>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<input id="stockist-search-term" type="search" placeholder="CP, Ciudad" autocomplete="off" />
+					<button id="stockists-submit"><i class="fa fa-map-marker"></i></button>
 <?php
-			if ($templateSetting == "page_width_top" or $templateSetting == "full_width_top"):
+					if ($templateSetting == "page_width_top" or $templateSetting == "full_width_top"):
 ?>
-				<span class="search-or"> or </span>
-				<button class="find-my-location"><?php /* @escapeNotVerified */ echo __("Find my location"); ?></button>
+						<button class="find-my-location"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><!-- <i class="fa fa-compass" aria-hidden="true"></i> --></button>
 <?php
-			endif;
+					endif;
 ?>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">
+					<!-- <a href="#ampliar-mapa" class="ampliar-mapa" data-text="Ampliar mapa">Reducir mapa</a> -->
+				</div>
+			</div>
 		</div>
 <?php
 		if ($templateSetting == "page_width_top" or $templateSetting == "full_width_top"):
@@ -72,64 +65,68 @@ else
 	endif;
 endif;
 ?>
-		<div class="stockists-results">
-			<div class="results-store">
-<?php
-				foreach ($data as $item):
-					$stores = explode(",", $item["store_id"]);
-
-					if ( in_array($storeId, $stores) ):
-						$data_marker = $item["latitude"] . $item["longitude"];
-?>
-				<div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
-<?php
-					if ($item["image"]):
-?>
-					<div class="image">
-						<img src="<?php echo $block->getBaseImageUrl() . $modulePath . $block->escapeHtml($item["image"]); ?>" alt="<?php echo $block->escapeHtml($item["name"]); ?>" />
-					</div>
-<?php
-					endif;
-?>
-					<div class="results-item-data">
-						<p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
-<?php
-						if ($item["address"]):
-?>
-						<p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
-<?php
-						endif;
-						if ($item["city"]):
-?>
-						<p class="results-phone">
-<?php
-							echo $block->escapeHtml($item["city"]);
-							echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : "";
-?>
-						</p>
-<?php
-						endif;
-						if ($item["country"] and $countryList[$item["country"]]):
-?>
-						<p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]); ?></p>
-<?php
-						endif;
-?>
+	<div class="content-stockists">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="stockists-info">
+					<ul class="navbar-vehicle-type">
+						<li class="active">
+							<input type="hidden" id="type-turismo" name="turismo" value="1">
+							<a href="/centros-rodi/turismo">
+								<span class="fa fa-check-square fa-2x"></span><?php /* @escapeNotVerified */ echo __('Turismo') ?>
+							</a>
+						</li>
+						<li>
+							<input type="hidden" id="type-moto" name="moto" value="0">
+							<a href="/centros-rodi/moto">
+								<span class="fa fa-square fa-2x"></span><?php /* @escapeNotVerified */ echo __('Moto') ?>
+							</a>
+						</li>
+						<li>
+							<input type="hidden" id="type-camion" name="camion" value="0">
+							<a href="/centros-rodi/camion">
+								<span class="fa fa-square fa-2x"></span><?php /* @escapeNotVerified */ echo __('Camión') ?>
+							</a>
+						</li>
+						<li>
+							<input type="hidden" id="type-agricola" name="agricola" value="0">
+							<a href="/centros-rodi/agricola">
+								<span class="fa fa-square fa-2x"></span><?php /* @escapeNotVerified */ echo __('Agrícola') ?>
+							</a>
+						</li>
+					</ul>
+					<label>
+						<input type="checkbox" id="renting" name="renting" value="0"> <?php /* @escapeNotVerified */ echo __('Renting') ?>
+					</label>
+					<label><?php /* @escapeNotVerified */ echo __('Província') ?></label>
+					<ul class="navbar-province"></ul>
+					<label class="hidden"><?php /* @escapeNotVerified */ echo __('Població') ?></label>
+					<ul class="navbar-city"></ul>
+					<label class="hidden"><?php /* @escapeNotVerified */ echo __('Centros mas cercanos') ?></label>
+					<div class="stockists-results">
+						<ul class="navbar-center results-store"></ul>
 					</div>
 				</div>
-<?php
-					endif;
-				endforeach;
-?>
 			</div>
-		</div>
-<?php
-		if ($templateSetting == "page_width_top"):
-?>
-		<div id="map-canvas" style="height: 100%; width: 100%;"></div>
-<?php
-		endif;
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="stockists-window"></div>
 
+				<div class="directions-panel">
+					<p><?php /* @escapeNotVerified */ echo __("Your directions"); ?>: </p>
+					<p class="change-directions">Change to <span class="walking get-directions" data-directions="WALKING">walking, </span><span class="cycle get-directions" data-directions="BICYCLING">cycling</span>, <span class="transit get-directions" data-directions="TRANSIT">public transport</span> or <span class="driving get-directions" data-directions="DRIVING">driving</span>.</p>
+					<div class="close"></div>
+				</div>
+			</div>
+<?php
+			if ($templateSetting == "page_width_top"):
+?>
+			<div id="map-canvas" style="height: 100%; width: 100%;"></div>
+<?php
+			endif;
+?>
+		</div>
+	</div>
+<?php
 	if ($templateSetting == "full_width_sidebar" or $templateSetting == "page_width_sidebar"):
 ?>
 	</div>
@@ -164,6 +161,12 @@ endif;
 		,	"strokeColor"	: "<?php echo $block->getStrokeColorSettings(); ?>"
 		,	"strokeOpacity"	: <?php echo json_encode($block->getStrokeOpacitySettings()); ?>
 		,	"strokeWeight"	: <?php echo json_encode($block->getStrokeWeightSettings()); ?>
+		,	"images"		: {
+								"turismo"	: "<?php echo $block->getViewFileUrl('images/icon-car.svg') ?>"
+							,	"moto"		: "<?php echo $block->getViewFileUrl('images/icon-moto.svg') ?>"
+							,	"camion"	: "<?php echo $block->getViewFileUrl('images/icon-truck.svg') ?>"
+							,	"agricola"	: "<?php echo $block->getViewFileUrl('images/icon-agro.svg') ?>"
+							}
 		}
 	}
 }

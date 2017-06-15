@@ -1,64 +1,114 @@
 /* general styling */
 .stockists.full-width #maincontent,
 .stockists.full-width .page-wrapper{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	max-width: none;
 }
 /*
 .stockists .page-title-wrapper{
-    text-align: center;
+	text-align: center;
 }
 */
 #map-canvas {
   height: 100%;
-  min-height: 800px;
+  min-height: 450px;
 }
 
 .stockists-index-index .main-container .main,
 .stockists-index-index .main-container .main .row {
-    max-width: none !important;
+	max-width: none !important;
 }
 
 .stockists-index-index .main-container .main .row {
-    padding: 0 !important;
+	padding: 0 !important;
 }
 .hide{
 	display:none;
 }
 
 /* gmaps pin window */
-.stockists-window {
-    padding: 20px 15px;
+.stockists-info,
+.stockists-window
+{
+	background-color: #F5F6F6;
+	margin: 1em 0;
+	padding: 0;
 }
+
 .stockists-window p {
-    font-size: 15px;
-    font-family: "Times New Roman", Times, serif;
+	font-size: 15px;
+	font-family: "Times New Roman", Times, serif;
 }
-.stockists-window .stockists-title {
-    color: #081c2a;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: bold;
+
+.stockists-window .stockists-title
+{
+	background: #444649;
+	color: #EEE;
+	font-weight: bold;
+	padding: 1em;
+	text-transform: uppercase;
 }
+
+.stockists-window .stockists-title h2
+{
+	font-size: 16px;
+	line-height: 17px;
+	margin: 0;
+}
+
+.stockists-window a
+{
+	color: #ffd100;
+	font-weight: bold;
+}
+
+.stockists-window i
+{
+	margin-right: 1em;
+}
+
+.stockists-window ul
+{
+	color: #B1B0B0;
+}
+
+.stockists-window p,
+.stockists-window ul
+{
+	padding: 2em;
+}
+
+.stockists-window span
+{
+	color: #646569;
+}
+
+.stockists-window span.fa-stack
+{
+	background-color: #ffd100;
+	border-radius: 4px;
+	margin-right: .5em;
+}
+
 .stockists-window .stockists-telephone {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 /* directions and search */
 .directions-panel,
 .search-stockists {
-    background: #ffffff;
-    width: 285px;
-    height: 464px;
-    padding: 20px 17px 20px 15px;
-    right: 100px;
-    z-index: 1;
-    top: 355px;
+	background: #ffffff;
+	width: 285px;
+	height: 464px;
+	padding: 20px 17px 20px 15px;
+	right: 100px;
+	z-index: 1;
+	top: 355px;
 }
 .full_width_sidebar .search-stockists{
-    height: 130px;
+	height: 130px;
 }
 .full_width_sidebar .stockists-results{
 	display: none;
@@ -86,37 +136,37 @@
 
 /* search sidebar specific */
 .search-stockists.close-up {
-    height: 250px;
+	height: 250px;
 }
 .search-stockists .search-title {
-    font-size: 24px;
-    margin-bottom: 19px;
-    font-family: "Times New Roman", Times, serif;
-    color: #081c2a;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+	font-size: 24px;
+	margin-bottom: 19px;
+	font-family: "Times New Roman", Times, serif;
+	color: #081c2a;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
 
 .search-stockists p {
-    font-size: 15px;
-    font-family: "Times New Roman", Times, serif;
-    margin-bottom: 0;
+	font-size: 15px;
+	font-family: "Times New Roman", Times, serif;
+	margin-bottom: 0;
 }
 .search-stockists .search-header p {
-    margin-bottom: 12px;
+	margin-bottom: 12px;
 }
 .search-stockists .results-title {
-    color: #081c2a;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 0.3px;
+	color: #081c2a;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.3px;
 }
 .search-stockists .stockists-results {
-    overflow-y: scroll;
-    height: 315px;
-    margin-top: 15px;
+	overflow-y: scroll;
+	height: 315px;
+	margin-top: 15px;
 }
 .stockists-results .image,
 .stockists-results .results-item-data{
@@ -124,85 +174,187 @@
 }
 .stockists-results .image{
 	width: 75px;
-    margin-right: 5px;
-    float: left;
+	margin-right: 5px;
+	float: left;
 }
 .search-stockists .results-word {
-    padding-left: 5px;
-    font-size: 14px;
+	padding-left: 5px;
+	font-size: 14px;
 }
 
 .results-store.grenson {
-    display: none;
+	display: none;
 }
 .stockists-intro {
-    display: block;
+	display: block;
 }
-#stockist-search-term {
-    display: inline-block;
-    height: 40px;
-    padding-left: 10px;
-    width: 184px;
-    border: 1px solid #c2c2c2;
-    margin-top: 5px;
+
+#stockist-search-term
+{
+	border: 1px solid #404140;
+	height: 40px;
+	margin: 5px -2px;
+	padding-left: 10px;
+	width: calc(100% - 92px);
 }
+
 #stockists-submit,
-.find-my-location {
-    display: inline-block;
-    margin-left: 0px;
-    background: #081c2a;
-    border: none;
-    font-size: 15px;
-    padding: 12px 10px;
-    top: -2px;
-    position: relative;
-    letter-spacing: 0.3px;
-    color: white;
-    border-radius: 0;
+.find-my-location
+{
+	font-size: 16px;
+	width: 46px;
 }
-.find-my-location:hover{
-    background: #081c2a;
-    box-shadow: none;
-    border: none;
-    color: white;
+
+#stockists-submit,
+.find-my-location,
+.ampliar-mapa
+{
+	background: #404140;
+	border: 0 none;
+	color: white;
+	padding: 9px 16px;
+	margin: 5px -2px;
+	vertical-align: top;
+}
+
+.ampliar-mapa
+{
+	display: inline-block;
+	transition: .5s;
+}
+
+.ampliar-mapa:hover
+{
+	background: #f6d000;
+	color: white;
+}
+
+#stockists-submit:hover,
+.find-my-location:hover
+{
+	background: #f6d000;
+	border: 0 none;
 }
 
 .search-header {
-    padding-left: 5px;
+	padding-left: 5px;
 }
 
-.results-content {
-    cursor: pointer;
-    width: 93%;
-    padding: 5px 10px 5px 5px;
-    margin-bottom: 10px;
+.full_width_top .content-stockists,
+.full_width_top .search-header
+{
+	width: 1170px;
+	margin: 0 auto;
 }
+
+.btn.pressu
+{
+	background: #ffd100;
+	border: 0;
+	color: #444649;
+	font-weight: bold;
+	width: 100%;
+}
+
+.results-content
+{
+	cursor: pointer;
+}
+
 .results-content p:not(.results-title) {
-    padding-bottom: 0;
-    font-size: 12px;
-    font-weight: normal;
+	padding-bottom: 0;
+	font-size: 12px;
+	font-weight: normal;
 }
+/*
 .results-content.active {
-    background: #f5f5f5;
+	background: #f5f5f5;
+}
+*/
+.results-content .label
+{
+	background: #404140;
+	display: block;
+	font-size: 12px;
+	left: 0;
+	line-height: normal;
+	padding: 1em;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.results-content .label:before
+{
+	bottom: 0;
+	border: 5px solid transparent;
+	border-bottom: 5px solid #8D8E91;
+	content: ' ';
+	left: 10px;
+	position: absolute;
+}
+
+.results-content .address
+{
+	background-color: #8D8E91;
+	color: #c9c9c9;
+	font-size: 14px;
+	padding: 50px 12px 13px;
+	transition: .5s;
+}
+
+.results-content .address:hover
+{
+	background-color: #B1B0B0;
+	color: #F5F6F6;
+}
+
+.results-content .phone
+{
+	bottom: 7px;
+	background-color: transparent;
+	color: #c9c9c9;
+	font-weight: bold;
+	position: absolute;
+	right: 7px;
+}
+
+.results-content .stockists-services
+{
+	position: absolute;
+	right: 1em;
+	top: .65em;
+}
+/*
+.results-content .stockists-services .fa
+{
+	color: #f6d000;
+	margin-left: .5em;
+}
+*/
+.results-content .stockists-services svg
+{
+	margin-left: 10px;
+	vertical-align: middle;
 }
 
 #grenson-stores {
-    display: none;
+	display: none;
 }
 .underline {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .directions-panel ::-webkit-scrollbar,
 .search-stockists ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
+	-webkit-appearance: none;
+	width: 7px;
 }
 .directions-panel ::-webkit-scrollbar-thumb,
 .search-stockists ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 .geocode-location{
 	display: inline-block;
@@ -228,13 +380,16 @@
 }
 
 /* page_width_sidebar styling */
-.page_width_sidebar.parent-stockists{
+.page_width_sidebar.parent-stockists,
+.full_width_top.parent-stockists
+{
 	position: relative;
 }
+
 .page_width_sidebar .search-stockists{
-    top: 0;
-    right: 0;
-    height: 130px;
+	top: 0;
+	right: 0;
+	height: 130px;
 }
 .page_width_sidebar .stockists-results{
 	display: none;
@@ -248,8 +403,21 @@
 	height: auto;
 	z-index: 1;
 	position: static;
+}
+
+.page_width_top .search-stockists
+{
 	border: 1px solid black;
 	margin-bottom: 10px;
+}
+
+.full_width_top .search-stockists
+{
+	background-color: transparent;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 .page_width_top #map-canvas{
@@ -275,7 +443,7 @@
 }
 .page_width_top .results-content{
 	width: auto;
-    border: 1px solid grey;
+	border: 1px solid grey;
 }
 .page_width_top .stockists-results{
 	display: none;
@@ -289,7 +457,7 @@
 @media only screen and (min-width: 1024px){
 	.page_width_sidebar .search-stockists,
 	.full_width_sidebar .search-stockists{
-	    height: 464px;
+		height: 464px;
 	}
 	.page_width_sidebar .stockists-results,
 	.page_width_top .stockists-results,
@@ -317,440 +485,560 @@
 
 /* individual store view */
 .individual-stockists {
-    border-bottom: 1px solid #c5b097;
+	border-bottom: 1px solid #c5b097;
 }
 .individual-stockists .image {
-    width: 100%;
-    display: none;
+	width: 100%;
+	display: none;
 }
 .individual-stockists .details {
-    width: 100%;
-    margin-top: 32px;
+	width: 100%;
+	margin-top: 32px;
 }
 .individual-stockists .details .title {
-    text-align: left;
-    margin-bottom: 16px;
+	text-align: left;
+	margin-bottom: 16px;
 }
 .individual-stockists .details .title p {
-    font-size: 28px;
-    color: #5b2a46;
+	font-size: 28px;
+	color: #5b2a46;
 }
 .individual-stockists .details .border {
-    background: #c5b097;
-    width: 45px;
-    height: 6px;
+	background: #c5b097;
+	width: 45px;
+	height: 6px;
 }
 .individual-stockists .details .address {
-    margin-top: 29px;
-    clear: both;
+	margin-top: 29px;
+	clear: both;
 }
 .individual-stockists .details .exact-address {
-    width: 40%;
-    float: left;
-    border-right: 1px solid #c5b097;
-    display: inline-block;
+	width: 40%;
+	float: left;
+	border-right: 1px solid #c5b097;
+	display: inline-block;
 }
 .individual-stockists .details p.address-title {
-    font-size: 21px;
-    color: #5b2a46;
-    margin-bottom: 5px;
+	font-size: 21px;
+	color: #5b2a46;
+	margin-bottom: 5px;
 }
 .individual-stockists .details .address p:not(.address-title) {
-    font-size: 14px;
-    margin-bottom: 5px;
+	font-size: 14px;
+	margin-bottom: 5px;
 }
 .individual-stockists .details .station {
-    width: 50%;
-    display: inline-block;
-    padding-left: 24px;
+	width: 50%;
+	display: inline-block;
+	padding-left: 24px;
 }
 .clearfix:after {
-    content: "";
-    display: block;
-    clear: both;
+	content: "";
+	display: block;
+	clear: both;
 }
 .individual-stockists .get-directions {
-    background: #e63c76;
-    border-radius: 5px;
-    margin-top: 43px;
-    margin-bottom: 26px;
-    padding: 15px;
-    text-align: center;
+	background: #e63c76;
+	border-radius: 5px;
+	margin-top: 43px;
+	margin-bottom: 26px;
+	padding: 15px;
+	text-align: center;
 }
 .individual-stockists .get-directions a {
-    color: #fff;
+	color: #fff;
 }
 #map-canvas-individual {
-    height: 288px;
-    width: 100%;
+	height: 288px;
+	width: 100%;
 }
 .individual-stockists .schedule {
-    font-size: 15px;
-    margin-top: 30px;
+	font-size: 15px;
+	margin-top: 30px;
 }
 .individual-stockists .schedule .day {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 .all-stores {
-    padding-top: 32px;
-    width: 100%;
-    display:none;
+	padding-top: 32px;
+	width: 100%;
+	display:none;
 }
 .all-stores button {
-    box-shadow: none;
-    background: none;
-    border: none;
+	box-shadow: none;
+	background: none;
+	border: none;
 }
 .all-stores button#arrow-left {
-    left: -5rem;
+	left: -5rem;
 }
 .all-stores button#arrow-right {
-    right: -5rem;
+	right: -5rem;
 }
 .all-stores button#arrow-right img {
-    width: 1.5rem;
-    -ms-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
+	width: 1.5rem;
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 .all-stores button#arrow-left,
 .all-stores button#arrow-right {
-    top: 5.5rem;
-    position: absolute;
+	top: 5.5rem;
+	position: absolute;
 }
 .all-stores .all-stores-title {
-    text-align: center;
-    padding-bottom: 34px;
+	text-align: center;
+	padding-bottom: 34px;
 }
 .all-stores .all-stores-slider-wrapper ul.slick-dots {
-    list-style: none;
-    margin: 2rem 0 0 0;
-    padding: 0;
-    text-align: center;
+	list-style: none;
+	margin: 2rem 0 0 0;
+	padding: 0;
+	text-align: center;
 }
 .all-stores .all-stores-slider-wrapper ul.slick-dots li {
-    margin-right: 1rem;
-    margin-left: 1rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
 }
 .all-stores .all-stores-slider-wrapper ul.slick-dots li button{
-    padding: 0;
-    margin: 0;
-    background: #ddd;
-    display: block;
-    -webkit-border-radius: 1000px;
-    -moz-border-radius: 1000px;
-    border-radius: 1000px;
-    height: 1rem;
-    width: 1rem;
-    text-indent: 9999px;
-    overflow: hidden;
+	padding: 0;
+	margin: 0;
+	background: #ddd;
+	display: block;
+	-webkit-border-radius: 1000px;
+	-moz-border-radius: 1000px;
+	border-radius: 1000px;
+	height: 1rem;
+	width: 1rem;
+	text-indent: 9999px;
+	overflow: hidden;
 }
 .slick-dots li {
-    display: none
+	display: none
 }
 .slick-dots li.slick-active,
 .slick-dots li.slick-active + li,
 .slick-dots li.slick-active + li + li,
 .slick-dots li.slick-active + li + li + li,
 .slick-dots li.slick-active + li + li + li + li {
-    display: inline-block;
+	display: inline-block;
 }
 .all-stores .all-stores-slider-wrapper .item .details {
-    position: absolute;
-    bottom: 0;
-    background: url("../images/store-background.svg") no-repeat;
-    background-size: cover;
-    height: 50px;
-    width: 100%;
-    text-align: center;
+	position: absolute;
+	bottom: 0;
+	background: url("../images/store-background.svg") no-repeat;
+	background-size: cover;
+	height: 50px;
+	width: 100%;
+	text-align: center;
 }
 .all-stores .all-stores-slider-wrapper .item .details p {
-    color: #fff;
-    font-size: 16px;
-    font-weight: normal;
-    padding-top: 12px;
-    text-align:center;
+	color: #fff;
+	font-size: 16px;
+	font-weight: normal;
+	padding-top: 12px;
+	text-align:center;
 }
 .all-stores .all-stores-slider-wrapper .item {
-    position: relative;
+	position: relative;
 }
 @media only screen and (min-width: 768px) {
-    .all-stores .all-stores-slider-wrapper .item {
-        margin: 0 10px;
-    }
-    .all-stores{
-        display: block;
-    }
-    .individual-stockists {
-        border-bottom: 1px solid #c5b097;
-        margin-top: 33px;
-        padding-bottom: 24px;
-    }
-    .individual-stockists .image {
-        float: left;
-        width: calc(50% - 20px);
-        display: inline-block;
-        padding-right: 20px;
-    }
-    .individual-stockists .details {
-        width: calc(50% - 20px);
-        display: inline-block;
-        padding-left: 20px;
-        margin-top: 2px;
-    }
-    .individual-stockists .details .title {
-        text-align: left;
-        margin-bottom: 16px;
-    }
-    .individual-stockists .details .title p {
-        font-size: 28px;
-        color: #5b2a46;
-    }
-    .individual-stockists .details .border {
-        background: #c5b097;
-        width: 45px;
-        height: 6px;
-    }
-    .individual-stockists .details .nearest-station p {
-        padding-left: 48px;
-    }
-    .individual-stockists .details .distance p {
-        padding-left: 48px;
-    }
-    .individual-stockists .details .address {
-        margin-top: 29px;
-        clear: both;
-    }
-    .individual-stockists .details .exact-address {
-        width: 40%;
-        float: left;
-        border-right: 1px solid #c5b097;
-        display: inline-block;
-    }
-    .individual-stockists .details p.address-title {
-        font-size: 21px;
-        color: #5b2a46;
-        margin-bottom: 5px;
-    }
-    .individual-stockists .details .address p:not(.address-title) {
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
-    .individual-stockists .details .station {
-        width: 50%;
-        display: inline-block;
-        padding-left: 24px;
-    }
-    .individual-stockists .details .nearest-station {
-        background: url(../images/station.svg) no-repeat;
-        background-size: 35px 32px;
-        margin-bottom: 20px;
-        min-height: 32px;
-    }
-    .individual-stockists .details .distance {
-        background: url(../images/distance.svg) no-repeat;
-        background-size: 35px 41px;
-        min-height: 41px;
-    }
-    .individual-stockists .get-directions {
-        background: #e63c76;
-        border-radius: 5px;
-        margin-top: 43px;
-        margin-bottom: 26px;
-        padding: 15px;
-        text-align: center;
-    }
-    #map-canvas-individual {
-        height: 189px;
-    }
-    .all-stores .all-stores-slider-wrapper .item .details {
-        position: absolute;
-        bottom: 0;
-        background: url("../images/store-background.svg") no-repeat;
-        background-size: cover;
-        height: 50px;
-        width: 100%;
-        text-align: center;
-    }
-    .all-stores .all-stores-slider-wrapper {
-        margin: 0 auto;
-    }
+	.all-stores .all-stores-slider-wrapper .item {
+		margin: 0 10px;
+	}
+	.all-stores{
+		display: block;
+	}
+	.individual-stockists {
+		border-bottom: 1px solid #c5b097;
+		margin-top: 33px;
+		padding-bottom: 24px;
+	}
+	.individual-stockists .image {
+		float: left;
+		width: calc(50% - 20px);
+		display: inline-block;
+		padding-right: 20px;
+	}
+	.individual-stockists .details {
+		width: calc(50% - 20px);
+		display: inline-block;
+		padding-left: 20px;
+		margin-top: 2px;
+	}
+	.individual-stockists .details .title {
+		text-align: left;
+		margin-bottom: 16px;
+	}
+	.individual-stockists .details .title p {
+		font-size: 28px;
+		color: #5b2a46;
+	}
+	.individual-stockists .details .border {
+		background: #c5b097;
+		width: 45px;
+		height: 6px;
+	}
+	.individual-stockists .details .nearest-station p {
+		padding-left: 48px;
+	}
+	.individual-stockists .details .distance p {
+		padding-left: 48px;
+	}
+	.individual-stockists .details .address {
+		margin-top: 29px;
+		clear: both;
+	}
+	.individual-stockists .details .exact-address {
+		width: 40%;
+		float: left;
+		border-right: 1px solid #c5b097;
+		display: inline-block;
+	}
+	.individual-stockists .details p.address-title {
+		font-size: 21px;
+		color: #5b2a46;
+		margin-bottom: 5px;
+	}
+	.individual-stockists .details .address p:not(.address-title) {
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+	.individual-stockists .details .station {
+		width: 50%;
+		display: inline-block;
+		padding-left: 24px;
+	}
+	.individual-stockists .details .nearest-station {
+		background: url(../images/station.svg) no-repeat;
+		background-size: 35px 32px;
+		margin-bottom: 20px;
+		min-height: 32px;
+	}
+	.individual-stockists .details .distance {
+		background: url(../images/distance.svg) no-repeat;
+		background-size: 35px 41px;
+		min-height: 41px;
+	}
+	.individual-stockists .get-directions {
+		background: #e63c76;
+		border-radius: 5px;
+		margin-top: 43px;
+		margin-bottom: 26px;
+		padding: 15px;
+		text-align: center;
+	}
+	#map-canvas-individual {
+		height: 189px;
+	}
+	.all-stores .all-stores-slider-wrapper .item .details {
+		position: absolute;
+		bottom: 0;
+		background: url("../images/store-background.svg") no-repeat;
+		background-size: cover;
+		height: 50px;
+		width: 100%;
+		text-align: center;
+	}
+	.all-stores .all-stores-slider-wrapper {
+		margin: 0 auto;
+	}
 }
 @media only screen and (min-width: 1024px) {
-    .individual-stockists {
-        margin-top: 66px;
-    }
-    .all-stores .all-stores-slider-wrapper {
-        max-width: 900px;
-    }
-    .individual-stockists .get-directions {
-        display: none;
-    }
+	.individual-stockists {
+		margin-top: 66px;
+	}
+	.all-stores .all-stores-slider-wrapper {
+		max-width: 900px;
+	}
+	.individual-stockists .get-directions {
+		display: none;
+	}
 }
 @media only screen and (min-width: 1120px) {
-    .individual-stockists {
-        padding-bottom: 42px;
-        margin-top: 66px;
-    }
-    .individual-stockists .image {
-        width: calc(54% - 20px);
-    }
-    .individual-stockists .details {
-        width: calc(46% - 20px);
-    }
-    .individual-stockists .details .title {
-        margin-bottom: 21px;
-    }
-    .individual-stockists .details .border {
-        width: 63px;
-        height: 5px;
-    }
-    .individual-stockists .details .address {
-        margin-top: 34px;
-    }
-    .individual-stockists .details .exact-address {
-        width: 30%;
-    }
-    .individual-stockists .details .station {
-        width: 50%;
-        display: inline-block;
-        padding-left: 24px;
-    }
-    #map-canvas-individual {
-        margin-top: 44px;
-        max-width: 461px;
-    }
-    .individual-stockists .schedule {
-        margin-top: 23px;
-    }
-    .individual-stockists .schedule .day {
-        margin-bottom: 15px;
-    }
-    .all-stores {
-        padding-top: 40px;
-    }
-    .all-stores .all-stores-title {
-        text-align: center;
-        padding-bottom: 34px;
-    }
-    .all-stores .all-stores-slider-wrapper {
-        max-width: 1000px;
-    }
+	.individual-stockists {
+		padding-bottom: 42px;
+		margin-top: 66px;
+	}
+	.individual-stockists .image {
+		width: calc(54% - 20px);
+	}
+	.individual-stockists .details {
+		width: calc(46% - 20px);
+	}
+	.individual-stockists .details .title {
+		margin-bottom: 21px;
+	}
+	.individual-stockists .details .border {
+		width: 63px;
+		height: 5px;
+	}
+	.individual-stockists .details .address {
+		margin-top: 34px;
+	}
+	.individual-stockists .details .exact-address {
+		width: 30%;
+	}
+	.individual-stockists .details .station {
+		width: 50%;
+		display: inline-block;
+		padding-left: 24px;
+	}
+	#map-canvas-individual {
+		margin-top: 44px;
+		/*max-width: 461px;*/
+	}
+	.individual-stockists .schedule {
+		margin-top: 23px;
+	}
+	.individual-stockists .schedule .day {
+		margin-bottom: 15px;
+	}
+	.all-stores {
+		padding-top: 40px;
+	}
+	.all-stores .all-stores-title {
+		text-align: center;
+		padding-bottom: 34px;
+	}
+	.all-stores .all-stores-slider-wrapper {
+		max-width: 1000px;
+	}
 }
 /* Slick Slider default */
 .slick-slider
 {
-    position: relative;
+	position: relative;
 
-    display: block;
-    box-sizing: border-box;
+	display: block;
+	box-sizing: border-box;
 
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .slick-list
 {
-    position: relative;
+	position: relative;
 
-    display: block;
-    overflow: hidden;
+	display: block;
+	overflow: hidden;
 
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .slick-list:focus
 {
-    outline: none;
+	outline: none;
 }
 .slick-list.dragging
 {
-    cursor: pointer;
-    cursor: hand;
+	cursor: pointer;
+	cursor: hand;
 }
 
 .slick-slider .slick-track,
 .slick-slider .slick-list
 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
 
 .slick-track
 {
-    position: relative;
-    top: 0;
-    left: 0;
+	position: relative;
+	top: 0;
+	left: 0;
 
-    display: block;
+	display: block;
 }
 .slick-track:before,
 .slick-track:after
 {
-    display: table;
+	display: table;
 
-    content: '';
+	content: '';
 }
 .slick-track:after
 {
-    clear: both;
+	clear: both;
 }
 .slick-loading .slick-track
 {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 .slick-slide
 {
-    display: none;
-    float: left;
+	display: none;
+	float: left;
 
-    height: 100%;
-    min-height: 1px;
+	height: 100%;
+	min-height: 1px;
 }
 [dir='rtl'] .slick-slide
 {
-    float: right;
+	float: right;
 }
 .slick-slide img
 {
-    display: block;
+	display: block;
 }
 .slick-slide.slick-loading img
 {
-    display: none;
+	display: none;
 }
 .slick-slide.dragging img
 {
-    pointer-events: none;
+	pointer-events: none;
 }
 .slick-initialized .slick-slide
 {
-    display: block;
+	display: block;
 }
 .slick-loading .slick-slide
 {
-    visibility: hidden;
+	visibility: hidden;
 }
 .slick-vertical .slick-slide
 {
-    display: block;
+	display: block;
 
-    height: auto;
+	height: auto;
 
-    border: 1px solid transparent;
+	border: 1px solid transparent;
 }
 .slick-arrow.slick-hidden {
-    display: none;
+	display: none;
+}
+
+.content-stockists label
+{
+	display: block;
+	font-size: 12px;
+	padding: 0 .5em;
+}
+
+.navbar-vehicle-type
+{
+	background-color: #404140;
+	margin: 1em 0;
+	overflow: hidden;
+	padding: .6em 1em;
+	position: relative;
+}
+
+.navbar-vehicle-type li
+{
+	float: left;
+	margin: 0;
+	position: relative;
+	width: 25%;
+}
+
+/*
+.navbar-vehicle-type li:before
+{
+	position: absolute;
+	background-color: #B1B0B0;
+	border-radius: 4px;
+	color: #404140;
+	height: 20px;
+	left: 6px;
+	top: 4px;
+	width: 20px;
+}
+
+.navbar-vehicle-type li:not(.active):before
+{
+	content: "";
+}
+*/
+
+.navbar-vehicle-type li .fa
+{
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.navbar-vehicle-type li.active .fa:before
+{
+	/*background-color: white;*/
+	color: white;
+}
+
+.navbar-vehicle-type li a
+{
+	font-family: 'Helvetica';
+	font-size: 14px;
+	font-weight: bold;
+	color: #B1B0B0;
+	display: block;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+.navbar-province,
+.navbar-city,
+.results-store
+{
+	padding: 0;
+}
+
+.navbar-province li,
+.navbar-city li,
+.results-store li
+{
+	background-color: #404140;
+	position: relative;
+}
+
+.results-store.active li:not(.active),
+.results-store li.active .label,
+.results-store li.active .stockists-services,
+.navbar-province.active li:not(.active),
+.navbar-city.active li:not(.active)
+{
+	display: none;
+}
+
+.navbar-province li a,
+.navbar-city li a,
+.results-store li a
+{
+	color: #B1B0B0;
+	display: block;
+	padding: .5em;
+}
+
+.navbar-province li a:hover,
+.navbar-city li a:hover,
+.results-store li a:hover
+{
+	color: #F5F6F6;
+}
+
+.results-store li.active .address,
+.navbar-province li.active a,
+.navbar-city li.active a
+{
+	background: transparent;
+	color: #f6d000;
+	padding: 7px 10px 5px 10px;
+}
+
+.results-store li.active .phone
+{
+	padding: 0;
 }

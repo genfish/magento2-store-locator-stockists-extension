@@ -10,11 +10,11 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
- * @copyright 2016 Claudiu Creanga
- * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @category	Limesharp
+ * @package		Limesharp_Stockists
+ * @copyright	2017 Claudiu Creanga
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ * @author		Claudiu Creanga & David Buxarrais
  */
 
 namespace Limesharp\Stockists\Controller\View;
@@ -35,157 +35,194 @@ use Limesharp\Stockists\Block\Stockists;
  */
 class Index extends Action
 {
-    /**
-     * @var string
-     */
-    const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_description';
+	/**
+	 * @var string
+	 */
+	const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_description';
 
-    /**
-     * @var string
-     */
-    const META_KEYWORDS_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_keywords';
+	/**
+	 * @var string
+	 */
+	const META_KEYWORDS_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_keywords';
 
-    /**
-     * @var string
-     */
-    const META_TITLE_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_title';
+	/**
+	 * @var string
+	 */
+	const META_TITLE_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_title';
 
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    public $scopeConfig;
+	/**
+	 * @var \Magento\Framework\App\Config\ScopeConfigInterface
+	 */
+	public $scopeConfig;
 
-    /**
-     * @var StoreManagerInterface
-     */
-    public $storeManager;
+	/**
+	 * @var StoreManagerInterface
+	 */
+	public $storeManager;
 
-    /** @var \Magento\Framework\View\Result\PageFactory  */
-    public $resultPageFactory;
+	/** @var \Magento\Framework\View\Result\PageFactory  */
+	public $resultPageFactory;
 
-    /**
-     * @var StockistsCollectionFactory
-     */
-    public $stockistsCollectionFactory;
+	/**
+	 * @var StockistsCollectionFactory
+	 */
+	public $stockistsCollectionFactory;
 
-    /**
-     * Configuration
-     *
-     * @var Stockists
-     */
-    protected $stockistsConfig;
+	/**
+	 * Configuration
+	 *
+	 * @var Stockists
+	 */
+	protected $stockistsConfig;
 
-    /**
-     * @param Context $context
-     * @param PageFactory $resultPageFactory
-     * @param ScopeConfigInterface $scopeConfig
-     */
-    public function __construct(
-        Context $context,
-        PageFactory $resultPageFactory,
-        ScopeConfigInterface $scopeConfig,
-        StockistsCollectionFactory $stockistsCollectionFactory,
-        StoreManagerInterface $storeManager,
-        Stockists $stockistsConfig
-    ) {
-        parent::__construct($context);
-        $this->resultPageFactory = $resultPageFactory;
-        $this->scopeConfig = $scopeConfig;
-        $this->stockistsCollectionFactory = $stockistsCollectionFactory;
-        $this->storeManager = $storeManager;
-        $this->stockistsConfig = $stockistsConfig;
-    }
+	/**
+	 * @param Context $context
+	 * @param PageFactory $resultPageFactory
+	 * @param ScopeConfigInterface $scopeConfig
+	 */
+	public function __construct(
+		Context $context,
+		PageFactory $resultPageFactory,
+		ScopeConfigInterface $scopeConfig,
+		StockistsCollectionFactory $stockistsCollectionFactory,
+		StoreManagerInterface $storeManager,
+		Stockists $stockistsConfig
+	) {
+		parent::__construct($context);
+		$this->resultPageFactory = $resultPageFactory;
+		$this->scopeConfig = $scopeConfig;
+		$this->stockistsCollectionFactory = $stockistsCollectionFactory;
+		$this->storeManager = $storeManager;
+		$this->stockistsConfig = $stockistsConfig;
+	}
 
-    /**
-     * Load the page defined in view/frontend/layout/stockists_index_index.xml
-     *
-     * @return \Magento\Framework\View\Result\Page
-     */
-    public function execute()
-    {
-        $url = $this->_url->getCurrentUrl();
-        $moduleUrl = $this->stockistsConfig->getModuleUrlSettings();
+	/**
+	 * Load the page defined in view/frontend/layout/stockists_index_index.xml
+	 *
+	 * @return \Magento\Framework\View\Result\Page
+	 */
+	public function execute()
+	{
+		$url = $this->_url->getCurrentUrl();
+		$moduleUrl = $this->stockistsConfig->getModuleUrlSettings();
 
-        preg_match('/'.$moduleUrl.'\/(.*)/', $url, $matches);
+		preg_match('/'.$moduleUrl.'\/(.*)/', $url, $matches);
 
-        $details = $this->getStoreDetails($matches[1]);
-        $allStores = $this->getAllStockistStores();
+		$details = $this->getStoreDetails($matches[1]);
+		$allStores = $this->getAllStockistStores();
 
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->getLayout()->getBlock('stockists.stores.individual')->setDetails($details);
-        $resultPage->getLayout()->getBlock('stockists.stores.individual')->setAllStores($allStores );
+		$resultPage = $this->resultPageFactory->create();
+		$resultPage->getLayout()->getBlock('stockists.stores.individual')->setDetails($details);
+		$resultPage->getLayout()->getBlock('stockists.stores.individual')->setAllStores($allStores);
 
-        $resultPage->getConfig()->getTitle()->set(
-            $this->scopeConfig->getValue(self::META_TITLE_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
-        );
-        $resultPage->getConfig()->setDescription(
-            $this->scopeConfig->getValue(self::META_DESCRIPTION_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
-        );
-        $resultPage->getConfig()->setKeywords(
-            $this->scopeConfig->getValue(self::META_KEYWORDS_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
-        );
+		$title_section = $this->scopeConfig->getValue(self::META_TITLE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
 
-        return $resultPage;
+		$resultPage->getConfig()->getTitle()->set($details['name'] . " - " . $title_section);
 
-    }
+		$resultPage->getConfig()->setDescription(
+			$this->scopeConfig->getValue(self::META_DESCRIPTION_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
+		);
 
-    /**
-     * return data from the loaded store details. Only the first store is returned if there are multiple urls
-     *
-     * @return array
-     */
-    public function getStoreDetails($url)
-    {
-        $collection = $this->getIndividualStore($url);
-        foreach($collection as $stockist){
-            return $stockist->getData();
-        }
-    }
+		$resultPage->getConfig()->setKeywords(
+			$this->scopeConfig->getValue(self::META_KEYWORDS_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
+		);
 
-    /**
-     * return data from the loaded store details. Only the first store is returned if there are multiple urls
-     *
-     * @return array
-     */
-    public function getAllStockistStores()
-    {
-        $collection = $this->getAllStoresCollection();
-        $data = [];
-        foreach($collection as $stockist){
-            $data[] = $stockist->getData();
-        }
-        return $data;
-    }
+		/** @var \Magento\Theme\Block\Html\Breadcrumbs $breadcrumbsBlock */
+		$breadcrumbsBlock = $resultPage->getLayout()->getBlock('breadcrumbs');
 
-    /**
-     * return stockists collection filtered by url
-     *
-     * @return CollectionFactory
-     */
-    public function getIndividualStore($url)
-    {
-        $collection = $this->stockistsCollectionFactory->create()
-            ->addFieldToSelect('*')
-            ->addFieldToFilter('status', Stores::STATUS_ENABLED)
-            ->addFieldToFilter('link', $url)
-            ->addStoreFilter($this->storeManager->getStore()->getId())
-            ->setOrder('name', 'ASC');
-        return $collection;
-    }
+		if ($breadcrumbsBlock)
+		{
+			$breadcrumbsBlock->addCrumb(
+				'home',
+				[
+					'label'	=> __('Home'),
+					'link'	 => $this->_url->getUrl('')
+				]
+			);
 
-    /**
-     * return stockists collection 
-     *
-     * @return CollectionFactory
-     */
-    public function getAllStoresCollection()
-    {
-        $collection = $this->stockistsCollectionFactory->create()
-            ->addFieldToSelect('*')
-            ->addFieldToFilter('status', Stores::STATUS_ENABLED)
-            ->addStoreFilter($this->storeManager->getStore()->getId())
-            ->setOrder('name', 'ASC');
-        return $collection;
-    }
+			$breadcrumbsBlock->addCrumb(
+				'stockists',
+				[
+					'label'	=> $title_section,
+					'link'	 => $this->_url->getUrl($moduleUrl)
+				]
+			);
 
+			$breadcrumbsBlock->addCrumb(
+				'',
+				[
+					'label'	=> $details['name'],
+				]
+			);
+		}
+
+		$pageMainTitle = $resultPage->getLayout()->getBlock('page.main.title');
+
+		if ($pageMainTitle)
+		{
+			$pageMainTitle->setPageTitle($details['name']);
+		}
+
+		return $resultPage;
+
+	}
+
+	/**
+	 * return data from the loaded store details. Only the first store is returned if there are multiple urls
+	 *
+	 * @return array
+	 */
+	public function getStoreDetails($url)
+	{
+		$collection = $this->getIndividualStore($url);
+		foreach($collection as $stockist){
+			return $stockist->getData();
+		}
+	}
+
+	/**
+	 * return data from the loaded store details. Only the first store is returned if there are multiple urls
+	 *
+	 * @return array
+	 */
+	public function getAllStockistStores()
+	{
+		$collection = $this->getAllStoresCollection();
+		$data = [];
+		foreach($collection as $stockist){
+			$data[] = $stockist->getData();
+		}
+		return $data;
+	}
+
+	/**
+	 * return stockists collection filtered by url
+	 *
+	 * @return CollectionFactory
+	 */
+	public function getIndividualStore($url)
+	{
+		$collection = $this->stockistsCollectionFactory->create()
+			->addFieldToSelect('*')
+			->addFieldToFilter('status', Stores::STATUS_ENABLED)
+			->addFieldToFilter('link', $url)
+			->addStoreFilter($this->storeManager->getStore()->getId(), false)
+			->setOrder('name', 'ASC');
+		return $collection;
+	}
+
+	/**
+	 * return stockists collection 
+	 *
+	 * @return CollectionFactory
+	 */
+	public function getAllStoresCollection()
+	{
+		$collection = $this->stockistsCollectionFactory->create()
+			->addFieldToSelect('*')
+			->addFieldToFilter('status', Stores::STATUS_ENABLED)
+			->addStoreFilter($this->storeManager->getStore()->getId(), false)
+			->setOrder('name', 'ASC');
+		return $collection;
+	}
 }
